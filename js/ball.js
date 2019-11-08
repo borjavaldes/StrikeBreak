@@ -6,8 +6,8 @@ class Ball {
         this.width = width
         this.posXball = 600
         this.posYball = 700
-        this.velX = 5
-        this.velY = 5
+        this.velX = 7
+        this.velY = 7
         this.radius = 10
 
     }

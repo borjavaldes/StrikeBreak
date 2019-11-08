@@ -7,11 +7,11 @@ const Game = {
     player: undefined,
     strike: [],
     blockBreak: [
-        [1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 0, 0, 0, 0, 1, 1, 0, 0],
+        [0, 1, 0, 0, 1, 0, 1, 1, 0],
+        [0, 0, 1, 0, 0, 0, 1, 0, 1],
+        [0, 0, 0, 1, 0, 1, 1, 0, 0],
+        [0, 0, 1, 1, 1, 0, 0, 1, 0],
     ],
     fps: 60,
     score: 0,
@@ -64,17 +64,36 @@ const Game = {
 
     generateBricks() {
         let label = this.blockBreak.length;
-        for (let i = 0; i < label; i++) {    //filas de la matrix
-            let long = this.blockBreak[i].length
-            for (let k = 0; k < long; k++) {        //columnas de la matrix
-                console.log(long)
-                if (this.blockBreak[i][k] == 1) {       //¿coincide la casilla con un 1?
+        if (this.nivel == 1 || this.nivel > 2) {
+            for (let i = 0; i < label; i++) {    //filas de la matrix
+                let long = this.blockBreak[i].length
+                for (let k = 0; k < long; k++) {        //columnas de la matrix
+                    console.log(long)
+                    if (this.blockBreak[i][k] == 1) {       //¿coincide la casilla con un 1?
 
-                    //push de un nuevo brick
-                    this.strike.push(new Block(this.ctx, this.width, this.height, window.innerWidth / 9 * k, window.innerHeight / 10 * i))
+                        //push de un nuevo brick
+                        this.strike.push(new Block(this.ctx, this.width, this.height, window.innerWidth / 9 * k, window.innerHeight / 10 * i))
 
+                    }
                 }
             }
+        }
+
+        if (this.nivel == 2) {
+            for (let i = 0; i < label; i++) {    //filas de la matrix
+                let long = this.blockBreak[i].length
+                for (let k = 0; k < long; k++) {        //columnas de la matrix
+                    console.log(long)
+                    if (this.blockBreak[i][k] == 1) {       //¿coincide la casilla con un 1?
+
+                        //push de un nuevo brick
+                        this.strike.push(new ladrilo(this.ctx, this.width, this.height, window.innerWidth / 9 * k, window.innerHeight / 10 * i))
+
+                    }
+                }
+            }
+
+
         }
 
     },

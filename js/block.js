@@ -18,4 +18,13 @@ class Block {
     draw() {
         this.ctx.drawImage(this.image, this.posX, this.posY, this.width, this.height)
     }
+
+}
+
+class ladrilo extends Block {
+    constructor(ctx, width, height, posX, posY) {
+        super(ctx, width, height, posX, posY)
+        this.image = new Image();
+        this.image.src = "js/img/ladrilo.png"
+    }
 }
